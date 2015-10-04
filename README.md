@@ -9,6 +9,7 @@ The weather data comes from external APIs, like [Open Weather Map](http://http:/
 
 + Getting current weather by a city name.
 
+```
 	CurrentWeatherData data = ClimeT.getCurrentWeather("London");
 	City city = data.getCity();
 	Weather weather = data.getWeather();
@@ -19,9 +20,11 @@ The weather data comes from external APIs, like [Open Weather Map](http://http:/
 
 	System.out.println("The current weather in " + city.getName() + " is: " + state + ", with a temperature of "
 			+ temp + "\u00b0.");
+```
 			
 + Getting hour forecast by coordinates.
 
+```
 	HourForecastData data = ClimeT.getHourForecast(51.51, -0.13);
 	List<Weather> forecast = data.getForecast();
 
@@ -33,9 +36,11 @@ The weather data comes from external APIs, like [Open Weather Map](http://http:/
 	System.out.println("The day " + sdf.format(date.getTime()) + " at " + date.get(Calendar.HOUR_OF_DAY)
 			+ ", the wind will have a speed of " + speed + " m/s, and the percentage of cloudiness will be "
 			+ cloudiness + "%.");
+```
 			
 + Getting date forecast by city.
 
+```
 	DateForecastData data = ClimeT.getDateForecast("London");
 	List<Weather> forecast = data.getForecast();
 
@@ -53,4 +58,4 @@ The weather data comes from external APIs, like [Open Weather Map](http://http:/
 
 	System.out.println("In the day " + sdf.format(date1.getTime()) + rainMessage + ", and in the day "
 			+ sdf.format(date2.getTime()) + snowMessage);
-			
+```
