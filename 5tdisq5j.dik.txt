@@ -1,0 +1,44 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# Changes to be committed:
+#	modified:   .gitignore
+#	modified:   README.md
+#	modified:   pom.xml
+#	new file:   src/main/java/org/malkomich/climet/AbstractRequester.java
+#	deleted:    src/main/java/org/malkomich/climet/CityNotFoundException.java
+#	deleted:    src/main/java/org/malkomich/climet/CurrentWeather.java
+#	new file:   src/main/java/org/malkomich/climet/CurrentWeatherClient.java
+#	deleted:    src/main/java/org/malkomich/climet/DateForecast.java
+#	new file:   src/main/java/org/malkomich/climet/DateForecastClient.java
+#	deleted:    src/main/java/org/malkomich/climet/DateWeather.java
+#	deleted:    src/main/java/org/malkomich/climet/HourForecast.java
+#	new file:   src/main/java/org/malkomich/climet/HourForecastClient.java
+#	deleted:    src/main/java/org/malkomich/climet/Town.java
+#	deleted:    src/main/java/org/malkomich/climet/Weather.java
+#	new file:   src/main/java/org/malkomich/climet/domain/AbstractData.java
+#	new file:   src/main/java/org/malkomich/climet/domain/CurrentWeatherData.java
+#	new file:   src/main/java/org/malkomich/climet/domain/DateForecastData.java
+#	new file:   src/main/java/org/malkomich/climet/domain/HourForecastData.java
+#	new file:   src/main/java/org/malkomich/climet/domain/OWN.java
+#	new file:   src/main/java/org/malkomich/climet/domain/Town.java
+#	new file:   src/main/java/org/malkomich/climet/domain/Weather.java
+#	new file:   src/main/java/org/malkomich/climet/domain/package-info.java
+#	new file:   src/main/java/org/malkomich/climet/exceptions/CityNotFoundException.java
+#	new file:   src/main/java/org/malkomich/climet/exceptions/package-info.java
+#	new file:   src/main/java/org/malkomich/climet/package-info.java
+#	modified:   src/test/java/org/malkomich/climet/ClimeTSuite.java
+#	modified:   src/test/java/org/malkomich/climet/TestCurrentWeather.java
+#	modified:   src/test/java/org/malkomich/climet/TestDateForecast.java
+#	deleted:    src/test/java/org/malkomich/climet/TestDateWeather.java
+#	modified:   src/test/java/org/malkomich/climet/TestHourForecast.java
+#	deleted:    src/test/java/org/malkomich/climet/TestWeather.java
+#	new file:   src/test/java/org/malkomich/climet/domain/DomainSuite.java
+#	new file:   src/test/java/org/malkomich/climet/domain/TestCurrentWeatherData.java
+#	new file:   src/test/java/org/malkomich/climet/domain/TestDateForecastData.java
+#	new file:   src/test/java/org/malkomich/climet/domain/TestHourForecastData.java
+#
+

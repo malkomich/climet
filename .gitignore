@@ -1,9 +1,18 @@
+# compile files
 /target/
 /bin/
 /build/
 /dist/
+
+# eclipse 
 .project
 .classpath
+.settings/
+
+# netbeans
 /nbproject/
 /buid.xml
-.settings/
+
+# intelliJ
+.idea/
+/*.iml
