@@ -24,7 +24,7 @@ public class CurrentWeatherData extends AbstractData {
 		String country = (json.getJSONObject(OWN.SYS)).getString(OWN.COUNTRY);
 		String name = json.getString(OWN.NAME);
 		int id = json.getInt(OWN.ID);
-		town = new Town(id, name, country, coordJSON);
+		town = new City(id, name, country, coordJSON);
 
 		JSONObject stateJSON = (JSONObject) (json.getJSONArray(OWN.STATE)).get(0);
 		JSONObject tempJSON = json.getJSONObject(OWN.MAIN);

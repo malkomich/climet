@@ -2,9 +2,9 @@ package org.malkomich.climet.domain;
 
 public class AbstractData {
 
-	protected Town town;
+	protected City town;
 	
-	public Town getTown() {
+	public City getTown() {
 		return town;
 	}
 	

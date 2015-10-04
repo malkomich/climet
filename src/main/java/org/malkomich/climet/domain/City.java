@@ -2,21 +2,21 @@ package org.malkomich.climet.domain;
 
 import org.json.JSONObject;
 
-public class Town {
+public class City {
 	
 	private int id;
 	private String name;
 	private String countryCode;
 	private Coordinates coordinates;
 	
-	public Town(int id, String name, String country, JSONObject coordJSON) {
+	public City(int id, String name, String country, JSONObject coordJSON) {
 		this.id = id;
 		this.name = name;
 		countryCode = country;
 		coordinates = (coordJSON != null) ? new Coordinates(coordJSON) : null;
 	}
 
-	public Town(JSONObject json) {
+	public City(JSONObject json) {
 		id = json.optInt(OWN.ID);
 		name = json.optString(OWN.NAME);
 		JSONObject coordJSON = json.optJSONObject(OWN.COORD);

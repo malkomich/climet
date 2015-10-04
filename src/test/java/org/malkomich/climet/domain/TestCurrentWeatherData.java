@@ -13,7 +13,7 @@ import org.malkomich.climet.domain.Weather.WeatherSnow;
 import org.malkomich.climet.domain.Weather.WeatherState;
 import org.malkomich.climet.domain.Weather.WeatherTemp;
 import org.malkomich.climet.domain.Weather.WeatherWind;
-import org.malkomich.climet.domain.Town.Coordinates;
+import org.malkomich.climet.domain.City.Coordinates;
 
 public class TestCurrentWeatherData {
 
@@ -38,7 +38,7 @@ public class TestCurrentWeatherData {
 		assertNotNull(weather);
 		assertEquals(1443871736000L, weather.getDateTime().getTimeInMillis());
 
-		Town town = weather.getTown();
+		City town = weather.getTown();
 		assertNotNull(town);
 		assertEquals(3174137, town.getId());
 		assertEquals("Malonno", town.getName());

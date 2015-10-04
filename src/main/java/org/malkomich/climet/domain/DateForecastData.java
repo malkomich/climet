@@ -15,7 +15,7 @@ public class DateForecastData extends AbstractData {
 	public DateForecastData(JSONObject json) {
 
 		JSONObject cityJSON = json.getJSONObject(OWN.CITY);
-		town = new Town(cityJSON);
+		town = new City(cityJSON);
 
 		JSONArray list = json.getJSONArray(OWN.LIST);
 		forecast = new ArrayList<>(list.length());
