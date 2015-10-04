@@ -1,10 +1,11 @@
 package org.malkomich.climet;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
+import org.malkomich.climet.domain.City;
 import org.malkomich.climet.domain.CurrentWeatherData;
+import org.malkomich.climet.domain.Weather;
 
 public class TestCurrentWeather {
 
@@ -19,8 +20,12 @@ public class TestCurrentWeather {
 	@Test
 	public void getCurrentWeatherByCity() {
 		CurrentWeatherClient api = new CurrentWeatherClient(CITY_EXAMPLE);
-		CurrentWeatherData weather = api.getWeather();
+		CurrentWeatherData data = api.getWeather();
+		City city = data.getCity();
+		Weather weather = data.getWeather();
+		assertNotNull(city);
 		assertNotNull(weather);
+		assertEquals("ES", city.getCountryCode());
 	}
 
 	/**
@@ -41,8 +46,12 @@ public class TestCurrentWeather {
 	@Test
 	public void getCurrentWeatherByCoordinates() {
 		CurrentWeatherClient api = new CurrentWeatherClient(LAT_EXAMPLE, LON_EXAMPLE);
-		CurrentWeatherData weather = api.getWeather();
+		CurrentWeatherData data = api.getWeather();
+		City city = data.getCity();
+		Weather weather = data.getWeather();
+		assertNotNull(city);
 		assertNotNull(weather);
+		assertEquals("ES", city.getCountryCode());
 	}
 	
 	/**

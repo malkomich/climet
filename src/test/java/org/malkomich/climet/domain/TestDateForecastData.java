@@ -27,6 +27,6 @@ public class TestDateForecastData {
 		DateForecastData data = new DateForecastData(json);
 		List<Weather> forecast = data.getForecast();
 		assertFalse(forecast.isEmpty());
-		assertNotNull(data.getTown());
+		assertNotNull(data.getCity());
 	}
 }

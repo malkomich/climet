@@ -38,15 +38,15 @@ public class TestCurrentWeatherData {
 		assertNotNull(weather);
 		assertEquals(1443871736000L, weather.getDateTime().getTimeInMillis());
 
-		City town = weather.getTown();
+		City town = weather.getCity();
 		assertNotNull(town);
 		assertEquals(3174137, town.getId());
 		assertEquals("Malonno", town.getName());
 		assertEquals("IT", town.getCountryCode());
 		Coordinates coord = town.getCoordinates();
 		assertNotNull(coord);
-		assertEquals(10.32f, coord.getLon(), 0.01f);
-		assertEquals(46.12, coord.getLat(), 0.01f);
+		assertEquals(10.32f, coord.getLongitude(), 0.01f);
+		assertEquals(46.12, coord.getLatitude(), 0.01f);
 
 		WeatherState state = weather.getState();
 		assertNotNull(state);
@@ -56,7 +56,7 @@ public class TestCurrentWeatherData {
 
 		WeatherTemp main = weather.getTemp();
 		assertNotNull(main);
-		assertEquals(286.24, main.getTemperature(), 0.01);
+		assertEquals(286.24, main.getCurrentTemp(), 0.01);
 		assertEquals(1022, main.getPressure());
 		assertEquals(81, main.getHumidity());
 		assertEquals(282.15, main.getMinTemp(), 0.01);
@@ -65,15 +65,15 @@ public class TestCurrentWeatherData {
 		WeatherWind wind = weather.getWind();
 		assertNotNull(wind);
 		assertEquals(0.86, wind.getSpeed(), 0.01);
-		assertEquals(163, wind.getDeg());
+		assertEquals(163, wind.getDegrees());
 
 		WeatherClouds clouds = weather.getClouds();
 		assertNotNull(clouds);
-		assertEquals(40, clouds.getAll());
+		assertEquals(40, clouds.getCloudiness());
 
 		WeatherRain rain = weather.getRain();
 		assertNotNull(rain);
-		assertEquals("3h", rain.getUnits());
+		assertEquals("3h", rain.getHours());
 		assertEquals(0.2275, rain.getValue(), 0.0001);
 
 		WeatherSnow snow = weather.getSnow();
@@ -85,7 +85,7 @@ public class TestCurrentWeatherData {
 	 */
 	 @Test
 	 public void getCelsiusTemperature() {
-	 double temp = weather.getTemp().getTemperature(WeatherTemp.CELSIUS);
+	 double temp = weather.getTemp().getCurrentTemp(Weather.CELSIUS);
 	 assertEquals(13.09, temp, 0.01);
 	 }
 	
@@ -94,7 +94,7 @@ public class TestCurrentWeatherData {
 	 */
 	 @Test
 	 public void getFarenheitTemperature() {
-		 double temp = weather.getTemp().getTemperature(WeatherTemp.FARENHEIT);
+		 double temp = weather.getTemp().getCurrentTemp(Weather.FARENHEIT);
 	 assertEquals(55.562, temp, 0.001);
 	 }
 	
@@ -103,7 +103,7 @@ public class TestCurrentWeatherData {
 	 */
 	 @Test
 	 public void getKelvinTemperature() {
-		 double temp = weather.getTemp().getTemperature(WeatherTemp.KELVIN);
+		 double temp = weather.getTemp().getCurrentTemp(Weather.KELVIN);
 	 assertEquals(286.24, temp, 0.01);
 	 }
 

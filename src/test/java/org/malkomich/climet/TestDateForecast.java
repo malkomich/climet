@@ -1,10 +1,16 @@
 package org.malkomich.climet;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
+import java.util.List;
+
 import org.junit.Test;
+import org.malkomich.climet.domain.City;
 import org.malkomich.climet.domain.DateForecastData;
+import org.malkomich.climet.domain.Weather;
 
 public class TestDateForecast {
 
@@ -20,7 +26,11 @@ public class TestDateForecast {
 	public void getDateForecastByCity() {
 		DateForecastClient api = new DateForecastClient(CITY_EXAMPLE);
 		DateForecastData data = api.getForecast();
-		assertNotNull(data);
+		City city = data.getCity();
+		List<Weather> forecast = data.getForecast();
+		assertNotNull(city);
+		assertFalse(forecast.isEmpty());
+		assertEquals("ES", city.getCountryCode());
 	}
 
 	/**
@@ -42,7 +52,11 @@ public class TestDateForecast {
 	public void getDateForecastByCoordinates() {
 		DateForecastClient api = new DateForecastClient(LAT_EXAMPLE, LON_EXAMPLE);
 		DateForecastData data = api.getForecast();
-		assertNotNull(data);
+		City city = data.getCity();
+		List<Weather> forecast = data.getForecast();
+		assertNotNull(city);
+		assertFalse(forecast.isEmpty());
+		assertEquals("ES", city.getCountryCode());
 	}
 
 	/**

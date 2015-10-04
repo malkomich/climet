@@ -137,6 +137,6 @@ public class TestHourForecastData {
 		HourForecastData data = new HourForecastData(json);
 		List<Weather> forecast = data.getForecast();
 		assertFalse(forecast.isEmpty());
-		assertNotNull(data.getTown());
+		assertNotNull(data.getCity());
 	}
 }

@@ -1,11 +1,16 @@
 package org.malkomich.climet.domain;
 
+import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Iterator;
 
 import org.json.JSONObject;
 
 public class Weather {
+
+	public static final int CELSIUS = 0;
+	public static final int FARENHEIT = 1;
+	public static final int KELVIN = 2;
 
 	private Calendar dateTime;
 	private WeatherState state;
@@ -18,19 +23,25 @@ public class Weather {
 	public Weather(Calendar datetime, JSONObject state, JSONObject temp, JSONObject wind, JSONObject clouds,
 			JSONObject rain, JSONObject snow) {
 		this.dateTime = datetime;
-		this.state = (state != null) ? new WeatherState(state) : null;
-		this.temp = (temp != null) ? new WeatherTemp(temp) : null;
-		this.wind = (wind != null) ? new WeatherWind(wind) : null;
-		this.clouds = (clouds != null) ? new WeatherClouds(clouds) : null;
-		this.rain = (rain != null) ? new WeatherRain(rain) : null;
-		this.snow = (snow != null) ? new WeatherSnow(snow) : null;
+		this.state = new WeatherState(state);
+		this.temp = new WeatherTemp(temp);
+		this.wind = new WeatherWind(wind);
+		this.clouds = new WeatherClouds(clouds);
+		this.rain = new WeatherRain(rain);
+		this.snow = new WeatherSnow(snow);
 	}
 
+	/**
+	 * Summary of the weather situation
+	 * 
+	 * @author malkomich
+	 *
+	 */
 	public class WeatherState {
 
-		private static final String OWM_MAIN = "main";
-		private static final String OWN_DESCRIPTION = "description";
-		private static final String OWN_ICON = "icon";
+		private final String OWM_MAIN = "main";
+		private final String OWN_DESCRIPTION = "description";
+		private final String OWN_ICON = "icon";
 
 		private String main;
 		private String description;
@@ -42,158 +53,314 @@ public class Weather {
 			icon = json.optString(OWN_ICON);
 		}
 
+		/**
+		 * Gets the headline of the weather state
+		 * 
+		 * @return
+		 */
 		public String getMain() {
 			return main;
 		}
 
+		/**
+		 * Gets a summary of the weather state
+		 * 
+		 * @return
+		 */
 		public String getDescription() {
 			return description;
 		}
 
+		/**
+		 * Gets an identifier of the icon for the weather state
+		 * (http://openweathermap.org/)
+		 * 
+		 * @return
+		 */
 		public String getIcon() {
 			return icon;
 		}
 	}
 
+	/**
+	 * Mainly properties of the weather
+	 * 
+	 * @author malkomich
+	 *
+	 */
 	public class WeatherTemp {
 
-		private static final String OWN_TEMPERATURE = "temp";
-		private static final String OWN_MIN_TEMP = "temp_min";
-		private static final String OWN_MAX_TEMP = "temp_max";
-		private static final String OWN_HUMIDITY = "humidity";
-		private static final String OWN_PRESSURE = "pressure";
+		private final String OWN_TEMPERATURE = "temp";
+		private final String OWN_MIN_TEMP = "temp_min";
+		private final String OWN_MAX_TEMP = "temp_max";
+		private final String OWN_HUMIDITY = "humidity";
+		private final String OWN_PRESSURE = "pressure";
 
-		public static final int CELSIUS = 0;
-		public static final int FARENHEIT = 1;
-		public static final int KELVIN = 2;
+		private final float CELSIUS_TO_KELVIN = 273.15f;
+		private final int TEMP_PRECISION = 2;
 
-		private static final double CELSIUS_TO_KELVIN = 273.15;
-
-		private double temperature;
+		private float currentTemp;
 		private int pressure;
 		private int humidity;
-		private double minTemp;
-		private double maxTemp;
+		private float minTemp;
+		private float maxTemp;
 
 		WeatherTemp(JSONObject json) {
-			temperature = json.optDouble(OWN_TEMPERATURE);
+			currentTemp = new Float(json.optDouble(OWN_TEMPERATURE));
 			pressure = json.optInt(OWN_PRESSURE);
 			humidity = json.optInt(OWN_HUMIDITY);
-			minTemp = json.optDouble(OWN_MIN_TEMP);
-			maxTemp = json.optDouble(OWN_MAX_TEMP);
+			minTemp = new Float(json.optDouble(OWN_MIN_TEMP));
+			maxTemp = new Float(json.optDouble(OWN_MAX_TEMP));
 
 		}
 
-		public double getTemperature() {
-			return getTemperature(WeatherTemp.KELVIN);
+		/**
+		 * Gets the current temperature in Kelvin by default
+		 * 
+		 * @return
+		 */
+		public float getCurrentTemp() {
+			return getCurrentTemp(KELVIN);
 		}
 
+		/**
+		 * Gets the atmospheric pressure in hPa
+		 * 
+		 * @return
+		 */
 		public int getPressure() {
 			return pressure;
 		}
 
+		/**
+		 * Gets the percentage of humidity
+		 * 
+		 * @return
+		 */
 		public int getHumidity() {
 			return humidity;
 		}
 
-		public double getMinTemp() {
+		/**
+		 * Gets the minimum temperature in Kelvin by default
+		 * 
+		 * @return
+		 */
+		public float getMinTemp() {
 			return minTemp;
 		}
 
-		public double getMaxTemp() {
+		/**
+		 * Gets the maximum temperature in Kelvin by default
+		 * 
+		 * @return
+		 */
+		public float getMaxTemp() {
 			return maxTemp;
 		}
 
-		public double getTemperature(int type) {
+		/**
+		 * Gets the current temperature in a specific measure between Kelvin,
+		 * Celsius or Farenheit
+		 * 
+		 * @param type
+		 * @return
+		 */
+		public float getCurrentTemp(int type) {
+			return unitConversion(currentTemp, type);
+		}
+
+		/**
+		 * Gets the minimum temperature in a specific measure between Kelvin,
+		 * Celsius or Farenheit
+		 * 
+		 * @param type
+		 * @return
+		 */
+		public float getMinTemp(int type) {
+			return unitConversion(minTemp, type);
+		}
+
+		/**
+		 * Gets the maximum temperature in a specific measure between Kelvin,
+		 * Celsius or Farenheit
+		 * 
+		 * @param type
+		 * @return
+		 */
+		public float getMaxTemp(int type) {
+			return unitConversion(maxTemp, type);
+		}
+
+		/**
+		 * Convert a temperature unit to another type of measure
+		 * 
+		 * @param value
+		 * @param type
+		 * @return
+		 */
+		private float unitConversion(float value, int type) {
+
+			float newValue;
 
 			switch (type) {
-			case WeatherTemp.CELSIUS:
-				return temperature - CELSIUS_TO_KELVIN;
-			case WeatherTemp.KELVIN:
-				return temperature;
-			case WeatherTemp.FARENHEIT:
-				return (temperature - CELSIUS_TO_KELVIN) * 1.8 + 32;
-
+			case CELSIUS:
+				newValue = value - CELSIUS_TO_KELVIN;
+				break;
+			case KELVIN:
+				return value;
+			case FARENHEIT:
+				newValue = (value - CELSIUS_TO_KELVIN) * 1.8f + 32;
+				break;
 			default:
 				throw new IllegalArgumentException("Invalid measurement");
 			}
+
+			BigDecimal bd = new BigDecimal(newValue);
+			bd = bd.setScale(TEMP_PRECISION, BigDecimal.ROUND_UP);
+			return bd.floatValue();
 		}
 	}
 
+	/**
+	 * Wind information
+	 * 
+	 * @author malkomich
+	 *
+	 */
 	public class WeatherWind {
 
-		private double speed;
-		private int deg;
+		private float speed;
+		private int degrees;
 
 		WeatherWind(JSONObject json) {
-			speed = json.optDouble(OWN.SPEED);
-			deg = json.optInt(OWN.DEG);
+			speed = new Float(json.optDouble(OWN.SPEED));
+			degrees = json.optInt(OWN.DEG);
 		}
 
-		public double getSpeed() {
+		/**
+		 * Gets the wind speed in meter/second
+		 * 
+		 * @return
+		 */
+		public float getSpeed() {
 			return speed;
 		}
 
-		public int getDeg() {
-			return deg;
+		/**
+		 * Gets the direction of the wind in degrees
+		 * 
+		 * @return
+		 */
+		public int getDegrees() {
+			return degrees;
 		}
 	}
 
+	/**
+	 * Cloudiness information
+	 * 
+	 * @author malkomich
+	 *
+	 */
 	public class WeatherClouds {
 
-		private int all;
+		private int cloudiness;
 
 		WeatherClouds(JSONObject json) {
-				all = json.optInt(OWN.ALL);
+			cloudiness = json.optInt(OWN.ALL);
 		}
 
-		public int getAll() {
-			return all;
+		/**
+		 * Gets the percentage of cloudiness
+		 * 
+		 * @return
+		 */
+		public int getCloudiness() {
+			return cloudiness;
 		}
 	}
 
+	/**
+	 * Precipitation information
+	 * 
+	 * @author malkomich
+	 *
+	 */
 	public class WeatherRain {
 
-		private String units;
-		private double value;
+		private int hours;
+		private float value = 0;
 
 		@SuppressWarnings("unchecked")
 		WeatherRain(JSONObject json) {
-			Iterator<String> it = json.keys();
-			if (it.hasNext()) {
-				units = it.next();
-				value = json.getDouble(units);
+			if (json != null) {
+				Iterator<String> it = json.keys();
+				if (it.hasNext()) {
+					String units = it.next();
+					hours = Integer.parseInt(units.split("h")[0]);
+					value = new Float(json.getDouble(units));
+				}
 			}
 		}
 
-		public String getUnits() {
-			return units;
+		/**
+		 * Gets the amount of hours since it is rainning
+		 * 
+		 * @return
+		 */
+		public int getHours() {
+			return hours;
 		}
 
-		public double getValue() {
+		/**
+		 * Gets the volume of precipitation in liters per square meter
+		 * 
+		 * @return
+		 */
+		public float getValue() {
 			return value;
 		}
 	}
 
+	/**
+	 * Precipitation information
+	 * 
+	 * @author malkomich
+	 *
+	 */
 	public class WeatherSnow {
 
-		private String units;
-		private double value;
+		private int hours = 0;
+		private float value = 0;
 
 		@SuppressWarnings("unchecked")
 		WeatherSnow(JSONObject json) {
-			Iterator<String> it = json.keys();
-			if (it.hasNext()) {
-				units = it.next();
-				value = json.getDouble(units);
+			if (json != null) {
+				Iterator<String> it = json.keys();
+				if (it.hasNext()) {
+					String units = it.next();
+					hours = Integer.parseInt(units.split("h")[0]);
+					value = new Float(json.getDouble(units));
+				}
 			}
 		}
 
-		public String getUnits() {
-			return units;
+		/**
+		 * Gets the amount of hours since it is snowing
+		 * 
+		 * @return
+		 */
+		public int getHours() {
+			return hours;
 		}
 
-		public double getValue() {
+		/**
+		 * Gets the volume of precipitation in liters per square meter
+		 * 
+		 * @return
+		 */
+		public float getValue() {
 			return value;
 		}
 	}
