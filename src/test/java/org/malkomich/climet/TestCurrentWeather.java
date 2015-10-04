@@ -1,14 +1,16 @@
 package org.malkomich.climet;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import org.junit.Test;
+import org.malkomich.climet.domain.CurrentWeatherData;
 
 public class TestCurrentWeather {
 
 	private final String CITY_EXAMPLE = "valladolid";
-	private final double LAT_EXAMPLE = 41.66;
-	private final double LON_EXAMPLE = -4.72;
+	private final float LAT_EXAMPLE = 41.66f;
+	private final float LON_EXAMPLE = -4.72f;
 
 	/**
 	 * Check the call to the REST Service from “OpenWeatherMap” by the name of a
@@ -16,20 +18,20 @@ public class TestCurrentWeather {
 	 */
 	@Test
 	public void getCurrentWeatherByCity() {
-		CurrentWeather api = new CurrentWeather(CITY_EXAMPLE);
-		Weather weather = api.getWeather();
-		Town town = api.getTown();
+		CurrentWeatherClient api = new CurrentWeatherClient(CITY_EXAMPLE);
+		CurrentWeatherData weather = api.getWeather();
 		assertNotNull(weather);
-		assertNotNull(town);
 	}
 
 	/**
 	 * Check the call to the REST Service from “OpenWeatherMap” by the name of
 	 * an invalid town.
 	 */
-	@Test(expected = CityNotFoundException.class)
+	@Test
 	public void getCurrentWeatherByWrongCity() {
-		new CurrentWeather("xlkahsjdg");
+		CurrentWeatherClient api = new CurrentWeatherClient("zzzzzzzzzz");
+		CurrentWeatherData weather = api.getWeather();
+		assertNull(weather);
 	}
 
 	/**
@@ -38,11 +40,20 @@ public class TestCurrentWeather {
 	 */
 	@Test
 	public void getCurrentWeatherByCoordinates() {
-		CurrentWeather api = new CurrentWeather(LAT_EXAMPLE, LON_EXAMPLE);
-		Weather weather = api.getWeather();
-		Town town = api.getTown();
+		CurrentWeatherClient api = new CurrentWeatherClient(LAT_EXAMPLE, LON_EXAMPLE);
+		CurrentWeatherData weather = api.getWeather();
 		assertNotNull(weather);
-		assertNotNull(town);
+	}
+	
+	/**
+	 * Check the call to the REST Service from “OpenWeatherMap” by wrong
+	 * coordinates.
+	 */
+	@Test
+	public void getCurrentWeatherByWrongCoordinates() {
+		CurrentWeatherClient api = new CurrentWeatherClient(100, -80);
+		CurrentWeatherData weather = api.getWeather();
+		assertNull(weather);
 	}
 
 }

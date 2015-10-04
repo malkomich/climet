@@ -29,6 +29,12 @@
 			<artifactId>maven-resources-plugin</artifactId>
 			<version>2.4.3</version>
 		</dependency>
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20140107</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -39,6 +45,7 @@
 				<configuration>
 					<source>${java.version}</source>
 					<target>${java.version}</target>
+					<encoding>${project.build.sourceEncoding}</encoding>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -48,6 +55,7 @@
 		<developer>
 			<name>Juan Carlos González</name>
 			<email>malkomich@gmail.com</email>
+			<id>malkomich</id>
 		</developer>
 	</developers>
 
