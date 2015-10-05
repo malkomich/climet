@@ -1,0 +1,12 @@
+language: java
+
+branches:
+  only:
+    - master
+
+jdk:
+  - openjdk7
+  - oraclejdk7
+  
+notifications:
+  email: true
