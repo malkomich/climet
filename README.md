@@ -1,5 +1,7 @@
 # Clime Tool for Java
 
+[![Build Status](https://travis-ci.org/malkomich/ClimeT.svg?branch=master)](https://travis-ci.org/malkomich/ClimeT)
+
 ## Overview
 
 This is a Java library wich provides a powerful tool for getting **weather information and forecasts** from any town you request.
