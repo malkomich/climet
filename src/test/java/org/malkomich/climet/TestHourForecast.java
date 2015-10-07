@@ -9,6 +9,7 @@ import org.malkomich.climet.domain.HourForecastData;
 public class TestHourForecast {
 
 	private final String CITY_EXAMPLE = "valladolid";
+	private final String WRONG_CITY_EXAMPLE = "zzzzzzzzzzzzzzzzzzzzz";
 	private final float LAT_EXAMPLE = 41.66f;
 	private final float LON_EXAMPLE = -4.72f;
 
@@ -29,7 +30,7 @@ public class TestHourForecast {
 	 */
 	@Test
 	public void getHourForecastByWrongCity() {
-		HourForecastClient api = new HourForecastClient("zzzzzzzzzz");
+		HourForecastClient api = new HourForecastClient(WRONG_CITY_EXAMPLE);
 		HourForecastData data = api.getForecast();
 		assertNull(data);
 	}
