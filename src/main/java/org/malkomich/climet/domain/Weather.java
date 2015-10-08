@@ -234,8 +234,8 @@ public class Weather {
 		private int degrees;
 
 		WeatherWind(JSONObject json) {
-			speed = new Float(json.optDouble(OWN.SPEED));
-			degrees = json.optInt(OWN.DEG);
+			speed = new Float(json.optDouble(OWM.SPEED));
+			degrees = json.optInt(OWM.DEG);
 		}
 
 		/**
@@ -268,7 +268,7 @@ public class Weather {
 		private int cloudiness;
 
 		WeatherClouds(JSONObject json) {
-			cloudiness = json.optInt(OWN.ALL);
+			cloudiness = json.optInt(OWM.ALL);
 		}
 
 		/**

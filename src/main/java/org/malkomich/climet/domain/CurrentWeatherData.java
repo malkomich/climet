@@ -18,20 +18,20 @@ public class CurrentWeatherData extends AbstractData {
 	public CurrentWeatherData(JSONObject json) {
 
 		Calendar dateTime = GregorianCalendar.getInstance();
-		dateTime.setTimeInMillis(json.getInt(OWN.DATETIME_SECS) * 1000L);
+		dateTime.setTimeInMillis(json.getInt(OWM.DATETIME_SECS) * 1000L);
 
-		JSONObject coordJSON = json.getJSONObject(OWN.COORD);
-		String country = (json.getJSONObject(OWN.SYS)).getString(OWN.COUNTRY);
-		String name = json.getString(OWN.NAME);
-		int id = json.getInt(OWN.ID);
+		JSONObject coordJSON = json.getJSONObject(OWM.COORD);
+		String country = (json.getJSONObject(OWM.SYS)).getString(OWM.COUNTRY);
+		String name = json.getString(OWM.NAME);
+		int id = json.getInt(OWM.ID);
 		city = new City(id, name, country, coordJSON);
 
-		JSONObject stateJSON = (JSONObject) (json.getJSONArray(OWN.STATE)).get(0);
-		JSONObject tempJSON = json.getJSONObject(OWN.MAIN);
-		JSONObject windJSON = json.getJSONObject(OWN.WIND);
-		JSONObject cloudsJSON = json.getJSONObject(OWN.CLOUDS);
-		JSONObject rainJSON = json.optJSONObject(OWN.RAIN);
-		JSONObject snowJSON = json.optJSONObject(OWN.SNOW);
+		JSONObject stateJSON = (JSONObject) (json.getJSONArray(OWM.STATE)).get(0);
+		JSONObject tempJSON = json.getJSONObject(OWM.MAIN);
+		JSONObject windJSON = json.getJSONObject(OWM.WIND);
+		JSONObject cloudsJSON = json.getJSONObject(OWM.CLOUDS);
+		JSONObject rainJSON = json.optJSONObject(OWM.RAIN);
+		JSONObject snowJSON = json.optJSONObject(OWM.SNOW);
 		
 		weather = new Weather(dateTime, stateJSON, tempJSON, windJSON, cloudsJSON, rainJSON, snowJSON);
 	}

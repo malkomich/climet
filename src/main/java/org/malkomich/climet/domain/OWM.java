@@ -1,6 +1,6 @@
 package org.malkomich.climet.domain;
 
-public class OWN {
+public class OWM {
 
 	// Open Weather Map identifiers for JSON Objects
 	public static final String DATETIME_SECS = "dt";

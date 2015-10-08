@@ -17,11 +17,11 @@ public class City {
 	}
 
 	public City(JSONObject json) {
-		id = json.optInt(OWN.ID);
-		name = json.optString(OWN.NAME);
-		JSONObject coordJSON = json.optJSONObject(OWN.COORD);
+		id = json.optInt(OWM.ID);
+		name = json.optString(OWM.NAME);
+		JSONObject coordJSON = json.optJSONObject(OWM.COORD);
 		coordinates = (coordJSON != null) ? new Coordinates(coordJSON) : null;
-		countryCode = json.optString(OWN.COUNTRY);
+		countryCode = json.optString(OWM.COUNTRY);
 	}
 
 	/**

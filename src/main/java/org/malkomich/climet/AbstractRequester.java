@@ -11,15 +11,16 @@ import org.json.JSONObject;
 
 public abstract class AbstractRequester {
 
+	private final String API_KEY = "26270deb633eb0d3251817f98eec72c1"; 
 	private final String OWN_COD = "cod";
 
 	protected AbstractRequester(String town) {
-		String path = getBaseURL() + "?q=" + town.toLowerCase();
+		String path = getBaseURL() + "?q=" + town.toLowerCase() + apiKeySuffix();
 		doRequest(path);
 	}
 
-	public AbstractRequester(float lat, float lon) {
-		String path = getBaseURL() + "?lat=" + lat + "&lon=" + lon;
+	protected AbstractRequester(float lat, float lon) {
+		String path = getBaseURL() + "?lat=" + lat + "&lon=" + lon + apiKeySuffix();
 		doRequest(path);
 	}
 
@@ -80,6 +81,10 @@ public abstract class AbstractRequester {
 		if (cod == 200) {
 			init(json);
 		}
+	}
+	
+	private String apiKeySuffix() {
+		return "&APPID=" + API_KEY;
 	}
 
 	/**

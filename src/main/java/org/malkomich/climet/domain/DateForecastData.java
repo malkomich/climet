@@ -14,44 +14,44 @@ public class DateForecastData extends AbstractData {
 
 	public DateForecastData(JSONObject json) {
 
-		JSONObject cityJSON = json.getJSONObject(OWN.CITY);
+		JSONObject cityJSON = json.getJSONObject(OWM.CITY);
 		city = new City(cityJSON);
 
-		JSONArray list = json.getJSONArray(OWN.LIST);
+		JSONArray list = json.getJSONArray(OWM.LIST);
 		forecast = new ArrayList<>(list.length());
 
 		for (int i = 0; i < list.length(); i++) {
 			JSONObject jsonItem = (JSONObject) list.get(i);
 
 			Calendar dateTime = GregorianCalendar.getInstance();
-			dateTime.setTimeInMillis(jsonItem.getInt(OWN.DATETIME_SECS) * 1000L);
+			dateTime.setTimeInMillis(jsonItem.getInt(OWM.DATETIME_SECS) * 1000L);
 
-			JSONObject stateJSON = (JSONObject) jsonItem.getJSONArray(OWN.STATE).get(0);
-			JSONObject tempJSON = jsonItem.getJSONObject(OWN.TEMP);
-			if (jsonItem.has(OWN.PRESSURE))
-				tempJSON.put(OWN.PRESSURE, jsonItem.getDouble(OWN.PRESSURE));
-			if (jsonItem.has(OWN.HUMIDITY))
-				tempJSON.put(OWN.HUMIDITY, jsonItem.getDouble(OWN.HUMIDITY));
+			JSONObject stateJSON = (JSONObject) jsonItem.getJSONArray(OWM.STATE).get(0);
+			JSONObject tempJSON = jsonItem.getJSONObject(OWM.TEMP);
+			if (jsonItem.has(OWM.PRESSURE))
+				tempJSON.put(OWM.PRESSURE, jsonItem.getDouble(OWM.PRESSURE));
+			if (jsonItem.has(OWM.HUMIDITY))
+				tempJSON.put(OWM.HUMIDITY, jsonItem.getDouble(OWM.HUMIDITY));
 			JSONObject windJSON = null;
-			if (jsonItem.has(OWN.SPEED) && jsonItem.has(OWN.DEG)) {
+			if (jsonItem.has(OWM.SPEED) && jsonItem.has(OWM.DEG)) {
 				windJSON = new JSONObject();
-				windJSON.put(OWN.SPEED, jsonItem.getDouble(OWN.SPEED));
-				windJSON.put(OWN.DEG, jsonItem.getInt(OWN.DEG));
+				windJSON.put(OWM.SPEED, jsonItem.getDouble(OWM.SPEED));
+				windJSON.put(OWM.DEG, jsonItem.getInt(OWM.DEG));
 			}
 			JSONObject cloudsJSON = null;
-			if (jsonItem.has(OWN.CLOUDS)) {
+			if (jsonItem.has(OWM.CLOUDS)) {
 				cloudsJSON = new JSONObject();
-				cloudsJSON.put(OWN.ALL, jsonItem.getInt(OWN.CLOUDS));
+				cloudsJSON.put(OWM.ALL, jsonItem.getInt(OWM.CLOUDS));
 			}
 			JSONObject rainJSON = null;
-			if (jsonItem.has(OWN.RAIN)) {
+			if (jsonItem.has(OWM.RAIN)) {
 				rainJSON = new JSONObject();
-				rainJSON.put("1", jsonItem.getDouble(OWN.RAIN));
+				rainJSON.put("1", jsonItem.getDouble(OWM.RAIN));
 			}
 			JSONObject snowJSON = null;
-			if (jsonItem.has(OWN.SNOW)) {
+			if (jsonItem.has(OWM.SNOW)) {
 				snowJSON = new JSONObject();
-				snowJSON.put("1", jsonItem.getDouble(OWN.SNOW));
+				snowJSON.put("1", jsonItem.getDouble(OWM.SNOW));
 			}
 
 			Weather weather = new Weather(dateTime, stateJSON, tempJSON, windJSON, cloudsJSON, rainJSON, snowJSON);
