@@ -7,6 +7,51 @@
 This is a Java library wich provides a powerful tool for getting **weather information and forecasts** from any city you request.
 The weather data comes from external APIs, like [Open Weather Map](http://http://openweathermap.org/).
 
+
+## Install
+
+**Gradle**
+
+```
+	repositories {
+    	maven { url "https://jitpack.io" }
+	}
+```
+
+```
+	dependencies {
+	    compile 'com.github.malkomich:ClimeT:1.0'
+	}
+```
+
+**Maven**
+
+```
+	<repository>
+	    <id>jitpack.io</id>
+	    <url>https://jitpack.io</url>
+	</repository>
+```
+
+```
+	<dependency>
+	    <groupId>com.github.malkomich</groupId>
+	    <artifactId>ClimeT</artifactId>
+	    <version>1.0</version>
+	</dependency>
+```
+
+**SBT**
+
+```
+	resolvers += "jitpack" at "https://jitpack.io"
+```
+
+```
+	libraryDependencies += "com.github.malkomich" % "ClimeT" % "1.0"
+```
+
+
 ## Usage
 
 + Getting current weather by a city name.

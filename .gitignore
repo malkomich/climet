@@ -16,3 +16,6 @@
 # intelliJ
 .idea/
 /*.iml
+
+# Temporary files
+*~

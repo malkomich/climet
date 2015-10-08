@@ -15,6 +15,7 @@ import org.malkomich.climet.domain.Weather;
 public class TestDateForecast {
 
 	private final String CITY_EXAMPLE = "valladolid";
+	private final String WRONG_CITY_EXAMPLE = "zzzzzzzzzzzzzzzzzzzzz";
 	private final float LAT_EXAMPLE = 41.66f;
 	private final float LON_EXAMPLE = -4.72f;
 
@@ -39,7 +40,7 @@ public class TestDateForecast {
 	 */
 	@Test
 	public void getDateForecastByWrongCity() {
-		DateForecastClient api = new DateForecastClient("zzzzzzzzzz");
+		DateForecastClient api = new DateForecastClient(WRONG_CITY_EXAMPLE);
 		DateForecastData data = api.getForecast();
 		assertNull(data);
 	}

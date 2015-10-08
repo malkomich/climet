@@ -10,6 +10,7 @@ import org.malkomich.climet.domain.Weather;
 public class TestCurrentWeather {
 
 	private final String CITY_EXAMPLE = "valladolid";
+	private final String WRONG_CITY_EXAMPLE = "zzzzzzzzzzzzzzzzzzzzz";
 	private final float LAT_EXAMPLE = 41.66f;
 	private final float LON_EXAMPLE = -4.72f;
 
@@ -34,7 +35,7 @@ public class TestCurrentWeather {
 	 */
 	@Test
 	public void getCurrentWeatherByWrongCity() {
-		CurrentWeatherClient api = new CurrentWeatherClient("zzzzzzzzzz");
+		CurrentWeatherClient api = new CurrentWeatherClient(WRONG_CITY_EXAMPLE);
 		CurrentWeatherData weather = api.getWeather();
 		assertNull(weather);
 	}
