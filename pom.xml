@@ -9,7 +9,7 @@
 
 	<name>Clime Tool API</name>
 	<description>Weather library for Java applications</description>
-	<url>http://maven.apache.org</url>
+	<url>https://github.com/malkomich/climet</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -52,6 +52,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.3</version>
 				<configuration>
 					<source>${java.version}</source>
 					<target>${java.version}</target>
@@ -74,10 +75,11 @@
 					<noJekyll>true</noJekyll>                                  <!-- disable webpage processing -->
 					<outputDirectory>${project.build.directory}/mvn-repo</outputDirectory> <!-- matches distribution management repository url above -->
 					<branch>refs/heads/mvn-repo</branch>                       <!-- remote branch name -->
+					<merge>true</merge>
 					<includes>
 						<include>**/*</include>
 					</includes>
-					<repositoryName>ClimeT</repositoryName>      <!-- github repo name -->
+					<repositoryName>climet</repositoryName>      <!-- github repo name -->
 					<repositoryOwner>malkomich</repositoryOwner>    <!-- github username -->
 				</configuration>
 				<executions>
@@ -103,9 +105,9 @@
 	</developers>
 
 	<scm>
-		<connection>scm:git:https://github.com/malkomich/ClimeT.git</connection>
-		<developerConnection>scm:git:https://github.com/malkomich/ClimeT.git
+		<connection>scm:git:https://github.com/malkomich/climet.git</connection>
+		<developerConnection>scm:git:https://github.com/malkomich/climet.git
         </developerConnection>
-		<url>https://github.com/malkomich/ClimeT</url>
+		<url>https://github.com/malkomich/climet</url>
 	</scm>
 </project>

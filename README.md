@@ -1,6 +1,6 @@
 # Clime Tool for Java
 
-[![Build Status](https://travis-ci.org/malkomich/ClimeT.svg?branch=master)](https://travis-ci.org/malkomich/ClimeT)
+[![Build Status](https://travis-ci.org/malkomich/climet.svg?branch=master)](https://travis-ci.org/malkomich/climet)
 
 ## Overview
 
@@ -20,7 +20,7 @@ The weather data comes from external APIs, like [Open Weather Map](http://http:/
 
 ```
 	dependencies {
-	    compile 'com.github.malkomich:ClimeT:1.0'
+	    provided 'com.github.malkomich:climet:1.0'
 	}
 ```
 
@@ -36,7 +36,7 @@ The weather data comes from external APIs, like [Open Weather Map](http://http:/
 ```
 	<dependency>
 	    <groupId>com.github.malkomich</groupId>
-	    <artifactId>ClimeT</artifactId>
+	    <artifactId>climet</artifactId>
 	    <version>1.0</version>
 	</dependency>
 ```
@@ -48,7 +48,7 @@ The weather data comes from external APIs, like [Open Weather Map](http://http:/
 ```
 
 ```
-	libraryDependencies += "com.github.malkomich" % "ClimeT" % "1.0"
+	libraryDependencies += "com.github.malkomich" % "climet" % "1.0"
 ```
 
 
