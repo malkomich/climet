@@ -7,6 +7,8 @@
 This is a Java library wich provides a powerful tool for getting **weather information and forecasts** from any city you request.
 The weather data comes from external APIs, like [Open Weather Map](http://http://openweathermap.org/).
 
+You must to be careful using this dependency in an Android application, because you have to call [ClimeT](https://github.com/malkomich/climet/blob/master/src/main/java/org/malkomich/climet/ClimeT.java) methods in an **Async Task** in order to avoid performing networking operations in the main thread. If you don't, you will get a *NetworkOnMainThreadException*.
+
 
 ## Install
 
@@ -20,7 +22,7 @@ The weather data comes from external APIs, like [Open Weather Map](http://http:/
 
 ```
 	dependencies {
-	    provided 'com.github.malkomich:climet:1.0'
+	    compile 'com.github.malkomich:climet:1.0'
 	}
 ```
 
