@@ -15,12 +15,6 @@ You must to be careful using this dependency in an Android application, because 
 **Gradle**
 
 ```
-	repositories {
-    	maven { url "https://jitpack.io" }
-	}
-```
-
-```
 	dependencies {
 	    compile 'com.github.malkomich:climet:1.0'
 	}
@@ -29,30 +23,12 @@ You must to be careful using this dependency in an Android application, because 
 **Maven**
 
 ```
-	<repository>
-	    <id>jitpack.io</id>
-	    <url>https://jitpack.io</url>
-	</repository>
-```
-
-```
 	<dependency>
 	    <groupId>com.github.malkomich</groupId>
 	    <artifactId>climet</artifactId>
 	    <version>1.0</version>
 	</dependency>
 ```
-
-**SBT**
-
-```
-	resolvers += "jitpack" at "https://jitpack.io"
-```
-
-```
-	libraryDependencies += "com.github.malkomich" % "climet" % "1.0"
-```
-
 
 ## Usage
 
