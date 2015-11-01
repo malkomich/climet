@@ -1,4 +1,4 @@
-package org.malkomich.climet;
+package climet;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -8,9 +8,11 @@ import static org.junit.Assert.assertNull;
 import java.util.List;
 
 import org.junit.Test;
-import org.malkomich.climet.domain.City;
-import org.malkomich.climet.domain.DateForecastData;
-import org.malkomich.climet.domain.Weather;
+
+import climet.DateForecastClient;
+import climet.domain.City;
+import climet.domain.DateForecastData;
+import climet.domain.Weather;
 
 public class TestDateForecast {
 

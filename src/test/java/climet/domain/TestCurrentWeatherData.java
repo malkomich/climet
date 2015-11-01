@@ -1,4 +1,4 @@
-package org.malkomich.climet.domain;
+package climet.domain;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -6,13 +6,17 @@ import static org.junit.Assert.assertNotNull;
 import org.json.JSONObject;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.malkomich.climet.domain.City.Coordinates;
-import org.malkomich.climet.domain.Weather.WeatherClouds;
-import org.malkomich.climet.domain.Weather.WeatherRain;
-import org.malkomich.climet.domain.Weather.WeatherSnow;
-import org.malkomich.climet.domain.Weather.WeatherState;
-import org.malkomich.climet.domain.Weather.WeatherTemp;
-import org.malkomich.climet.domain.Weather.WeatherWind;
+
+import climet.domain.City;
+import climet.domain.CurrentWeatherData;
+import climet.domain.Weather;
+import climet.domain.City.Coordinates;
+import climet.domain.Weather.WeatherClouds;
+import climet.domain.Weather.WeatherRain;
+import climet.domain.Weather.WeatherSnow;
+import climet.domain.Weather.WeatherState;
+import climet.domain.Weather.WeatherTemp;
+import climet.domain.Weather.WeatherWind;
 
 public class TestCurrentWeatherData {
 
@@ -52,7 +56,7 @@ public class TestCurrentWeatherData {
 		WeatherState state = weather.getState();
 		assertNotNull(state);
 		assertEquals("Mist", state.getMain());
-		assertEquals("mist", state.getDescription());
+		assertEquals("mist", state.getCode().name().toLowerCase());
 		assertEquals("50d", state.getIcon());
 
 		WeatherTemp main = weather.getTemp();

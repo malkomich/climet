@@ -1,4 +1,4 @@
-package org.malkomich.climet.domain;
+package climet.domain;
 
 import static org.junit.Assert.*;
 
@@ -6,6 +6,9 @@ import java.util.List;
 
 import org.json.JSONObject;
 import org.junit.Test;
+
+import climet.domain.HourForecastData;
+import climet.domain.Weather;
 
 public class TestHourForecastData {
 

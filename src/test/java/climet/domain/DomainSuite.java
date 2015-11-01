@@ -1,4 +1,4 @@
-package org.malkomich.climet.domain;
+package climet.domain;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;

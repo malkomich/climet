@@ -1,8 +1,9 @@
-package org.malkomich.climet;
+package climet;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.malkomich.climet.domain.CurrentWeatherData;
+
+import climet.domain.CurrentWeatherData;
 
 public class CurrentWeatherClient extends AbstractRequester{
 

@@ -1,4 +1,4 @@
-package org.malkomich.climet.domain;
+package climet.domain;
 
 import org.json.JSONObject;
 

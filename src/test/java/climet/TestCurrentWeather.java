@@ -1,11 +1,13 @@
-package org.malkomich.climet;
+package climet;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-import org.malkomich.climet.domain.City;
-import org.malkomich.climet.domain.CurrentWeatherData;
-import org.malkomich.climet.domain.Weather;
+
+import climet.CurrentWeatherClient;
+import climet.domain.City;
+import climet.domain.CurrentWeatherData;
+import climet.domain.Weather;
 
 public class TestCurrentWeather {
 

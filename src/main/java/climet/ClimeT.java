@@ -1,9 +1,9 @@
-package org.malkomich.climet;
+package climet;
 
-import org.malkomich.climet.domain.CurrentWeatherData;
-import org.malkomich.climet.domain.DateForecastData;
-import org.malkomich.climet.domain.HourForecastData;
-import org.malkomich.climet.exceptions.CityNotFoundException;
+import climet.domain.CurrentWeatherData;
+import climet.domain.DateForecastData;
+import climet.domain.HourForecastData;
+import climet.exceptions.CityNotFoundException;
 
 public class ClimeT {
 

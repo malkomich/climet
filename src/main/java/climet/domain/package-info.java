@@ -5,4 +5,4 @@
  * @author malkomich
  *
  */
-package org.malkomich.climet.domain;
+package climet.domain;

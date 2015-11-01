@@ -1,4 +1,4 @@
-package org.malkomich.climet;
+package climet;
 
 import java.io.BufferedReader;
 import java.io.IOException;

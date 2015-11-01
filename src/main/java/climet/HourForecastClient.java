@@ -1,19 +1,20 @@
-package org.malkomich.climet;
+package climet;
 
 import org.json.JSONObject;
-import org.malkomich.climet.domain.DateForecastData;
 
-public class DateForecastClient extends AbstractRequester {
+import climet.domain.HourForecastData;
 
-	private final String baseUrl = "http://api.openweathermap.org/data/2.5/forecast/daily";
+public class HourForecastClient extends AbstractRequester {
 
-	private DateForecastData forecastData;
+	private final String baseUrl = "http://api.openweathermap.org/data/2.5/forecast";
 
-	public DateForecastClient(String town) {
+	private HourForecastData forecastData;
+
+	public HourForecastClient(String town) {
 		super(town);
 	}
 
-	public DateForecastClient(float lat, float lon) {
+	public HourForecastClient(float lat, float lon) {
 		super(lat, lon);
 	}
 
@@ -24,7 +25,7 @@ public class DateForecastClient extends AbstractRequester {
 	 */
 	@Override
 	protected void init(JSONObject json) {
-		forecastData = new DateForecastData(json);
+		forecastData = new HourForecastData(json);
 	}
 
 	/*
@@ -33,7 +34,7 @@ public class DateForecastClient extends AbstractRequester {
 	 * @see org.malkomich.climet.AbstractRequester#apiSuccess()
 	 */
 	@Override
-	protected boolean apiSuccess() {
+	public boolean apiSuccess() {
 		if (forecastData != null)
 			return true;
 		return false;
@@ -49,7 +50,7 @@ public class DateForecastClient extends AbstractRequester {
 		return baseUrl;
 	}
 
-	public DateForecastData getForecast() {
+	public HourForecastData getForecast() {
 		return forecastData;
 	}
 

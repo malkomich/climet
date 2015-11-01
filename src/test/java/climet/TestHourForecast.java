@@ -1,10 +1,12 @@
-package org.malkomich.climet;
+package climet;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
 import org.junit.Test;
-import org.malkomich.climet.domain.HourForecastData;
+
+import climet.HourForecastClient;
+import climet.domain.HourForecastData;
 
 public class TestHourForecast {
 

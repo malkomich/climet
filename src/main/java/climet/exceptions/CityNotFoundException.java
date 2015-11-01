@@ -1,4 +1,4 @@
-package org.malkomich.climet.exceptions;
+package climet.exceptions;
 
 public class CityNotFoundException extends Exception {
 

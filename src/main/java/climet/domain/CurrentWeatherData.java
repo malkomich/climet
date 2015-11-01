@@ -1,15 +1,16 @@
-package org.malkomich.climet.domain;
+package climet.domain;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import org.json.JSONObject;
-import org.malkomich.climet.domain.Weather.WeatherClouds;
-import org.malkomich.climet.domain.Weather.WeatherRain;
-import org.malkomich.climet.domain.Weather.WeatherSnow;
-import org.malkomich.climet.domain.Weather.WeatherState;
-import org.malkomich.climet.domain.Weather.WeatherTemp;
-import org.malkomich.climet.domain.Weather.WeatherWind;
+
+import climet.domain.Weather.WeatherClouds;
+import climet.domain.Weather.WeatherRain;
+import climet.domain.Weather.WeatherSnow;
+import climet.domain.Weather.WeatherState;
+import climet.domain.Weather.WeatherTemp;
+import climet.domain.Weather.WeatherWind;
 
 public class CurrentWeatherData extends AbstractData {
 
