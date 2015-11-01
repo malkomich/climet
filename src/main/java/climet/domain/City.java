@@ -25,7 +25,7 @@ public class City {
 	}
 
 	/**
-	 * Geo Location of a city
+	 * Geo Location of a city wich wraps the latitude and longitude values.
 	 * 
 	 * @author malkomich
 	 *
@@ -45,7 +45,7 @@ public class City {
 		/**
 		 * Gets the latitude of the geo location
 		 * 
-		 * @return
+		 * @return Latitude
 		 */
 		public float getLatitude() {
 			return latitude;
@@ -54,7 +54,7 @@ public class City {
 		/**
 		 * Gets the longitude of the geo location
 		 * 
-		 * @return
+		 * @return Longitude
 		 */
 		public float getLongitude() {
 			return longitude;
@@ -64,7 +64,7 @@ public class City {
 	/**
 	 * Gets the city identifier
 	 * 
-	 * @return
+	 * @return City global ID
 	 */
 	public int getId() {
 		return id;
@@ -73,7 +73,7 @@ public class City {
 	/**
 	 * Gets the city name
 	 * 
-	 * @return
+	 * @return City name
 	 */
 	public String getName() {
 		return name;
@@ -82,12 +82,17 @@ public class City {
 	/**
 	 * Gets the code of the country where the city is from
 	 * 
-	 * @return
+	 * @return Code ID for the Country
 	 */
 	public String getCountryCode() {
 		return countryCode;
 	}
 
+	/**
+	 * Retrieves a wrapper for the Latitude and Longitude params of the city
+	 * 
+	 * @return Coordinates POJO
+	 */
 	public Coordinates getCoordinates() {
 		return coordinates;
 	}

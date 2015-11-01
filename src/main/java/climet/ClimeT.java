@@ -9,9 +9,9 @@ public class ClimeT {
 
 	/**
 	 * Gets Current Weather by City.
-	 * @param city
-	 * @return
-	 * @throws CityNotFoundException
+	 * @param city City or Town to find
+	 * @return Current weather information POJO
+	 * @throws CityNotFoundException City Not Found
 	 */
 	public static CurrentWeatherData getCurrentWeather(String city) throws CityNotFoundException {
 		CurrentWeatherClient data = new CurrentWeatherClient(city);
@@ -22,10 +22,10 @@ public class ClimeT {
 	
 	/**
 	 * Gets Current Weather by coordinates of the geo location.
-	 * @param lat
-	 * @param lon
-	 * @return
-	 * @throws CityNotFoundException
+	 * @param lat Latitude
+	 * @param lon Longitude
+	 * @return Current weather information POJO
+	 * @throws CityNotFoundException City Not Found
 	 */
 	public static CurrentWeatherData getCurrentWeather(float lat, float lon) throws CityNotFoundException {
 		CurrentWeatherClient data = new CurrentWeatherClient(lat, lon);
@@ -36,10 +36,10 @@ public class ClimeT {
 	
 	/**
 	 * Gets Current Weather by coordinates of the geo location.
-	 * @param lat
-	 * @param lon
-	 * @return
-	 * @throws CityNotFoundException
+	 * @param lat Latitude
+	 * @param lon Longitude
+	 * @return Current weather information POJO
+	 * @throws CityNotFoundException City Not Found
 	 */
 	public static CurrentWeatherData getCurrentWeather(double lat, double lon) throws CityNotFoundException {
 		return getCurrentWeather(new Float(lat), new Float(lon));
@@ -47,12 +47,12 @@ public class ClimeT {
 	
 	/**
 	 * Gets Hour Forecast by City.
-	 * @param town
-	 * @return
-	 * @throws CityNotFoundException
+	 * @param city City or Town to find
+	 * @return Forecast information POJO
+	 * @throws CityNotFoundException City Not Found
 	 */
-	public static HourForecastData getHourForecast(String town) throws CityNotFoundException {
-		HourForecastClient data = new HourForecastClient(town);
+	public static HourForecastData getHourForecast(String city) throws CityNotFoundException {
+		HourForecastClient data = new HourForecastClient(city);
 		if(data.apiSuccess())
 			return data.getForecast();
 		throw new CityNotFoundException("Error");
@@ -60,10 +60,10 @@ public class ClimeT {
 	
 	/**
 	 * Gets Hour Forecast by coordinates of the geo location.
-	 * @param lat
-	 * @param lon
-	 * @return
-	 * @throws CityNotFoundException
+	 * @param lat Latitude
+	 * @param lon Longitude
+	 * @return Forecast information POJO
+	 * @throws CityNotFoundException City Not Found
 	 */
 	public static HourForecastData getHourForecast(float lat, float lon) throws CityNotFoundException {
 		HourForecastClient data = new HourForecastClient(lat, lon);
@@ -74,10 +74,10 @@ public class ClimeT {
 	
 	/**
 	 * Gets Hour Forecast by coordinates of the geo location.
-	 * @param lat
-	 * @param lon
-	 * @return
-	 * @throws CityNotFoundException
+	 * @param lat Latitude
+	 * @param lon Longitude
+	 * @return Forecast information POJO
+	 * @throws CityNotFoundException City Not Found
 	 */
 	public static HourForecastData getHourForecast(double lat, double lon) throws CityNotFoundException {
 		return getHourForecast(new Float(lat), new Float(lon));
@@ -85,12 +85,12 @@ public class ClimeT {
 	
 	/**
 	 * Gets Date Forecast by City.
-	 * @param town
-	 * @return
-	 * @throws CityNotFoundException
+	 * @param city City or Town to find
+	 * @return Forecast information POJO
+	 * @throws CityNotFoundException City Not Found
 	 */
-	public static DateForecastData getDateForecast(String town) throws CityNotFoundException {
-		DateForecastClient data = new DateForecastClient(town);
+	public static DateForecastData getDateForecast(String city) throws CityNotFoundException {
+		DateForecastClient data = new DateForecastClient(city);
 		if(data.apiSuccess())
 			return data.getForecast();
 		throw new CityNotFoundException("Error");
@@ -98,10 +98,10 @@ public class ClimeT {
 	
 	/**
 	 * Gets Date Forecast by coordinates of the geo location.
-	 * @param lat
-	 * @param lon
-	 * @return
-	 * @throws CityNotFoundException
+	 * @param lat Latitude
+	 * @param lon Longitude
+	 * @return Forecast information POJO
+	 * @throws CityNotFoundException City Not Found
 	 */
 	public static DateForecastData getHourForgetDateForecastcast(float lat, float lon) throws CityNotFoundException {
 		DateForecastClient data = new DateForecastClient(lat, lon);
@@ -112,10 +112,10 @@ public class ClimeT {
 	
 	/**
 	 * Gets Date Forecast by coordinates of the geo location.
-	 * @param lat
-	 * @param lon
-	 * @return
-	 * @throws CityNotFoundException
+	 * @param lat Latitude
+	 * @param lon Longitude
+	 * @return Forecast information POJO
+	 * @throws CityNotFoundException City Not Found
 	 */
 	public static DateForecastData getHourForgetDateForecastcast(double lat, double lon) throws CityNotFoundException {
 		return getHourForgetDateForecastcast(new Float(lat), new Float(lon));

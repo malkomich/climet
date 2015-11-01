@@ -11,7 +11,7 @@ import org.json.JSONObject;
 
 public abstract class AbstractRequester {
 
-	private final String API_KEY = "26270deb633eb0d3251817f98eec72c1"; 
+	private final String API_KEY = "26270deb633eb0d3251817f98eec72c1";
 	private final String OWN_COD = "cod";
 
 	protected AbstractRequester(String town) {
@@ -29,6 +29,7 @@ public abstract class AbstractRequester {
 	 * parser.
 	 * 
 	 * @param path
+	 *            Service URL
 	 */
 	private void doRequest(String path) {
 
@@ -72,6 +73,7 @@ public abstract class AbstractRequester {
 	 * and Town.
 	 * 
 	 * @param output
+	 *            Service Data result
 	 */
 	private void parseOutput(String output) {
 
@@ -82,7 +84,12 @@ public abstract class AbstractRequester {
 			init(json);
 		}
 	}
-	
+
+	/**
+	 * Retrieves the portion of the URL to specify the API key
+	 * 
+	 * @return URL portion
+	 */
 	private String apiKeySuffix() {
 		return "&APPID=" + API_KEY;
 	}
@@ -91,20 +98,21 @@ public abstract class AbstractRequester {
 	 * Initialize weather objects and save the information to them.
 	 * 
 	 * @param json
+	 *            JSON data to parse
 	 */
 	protected abstract void init(JSONObject json);
 
 	/**
 	 * Retrieves the root path of the Web Service.
 	 * 
-	 * @return
+	 * @return URL root
 	 */
 	protected abstract String getBaseURL();
 
 	/**
 	 * Check if domain objects has been set.
 	 * 
-	 * @return
+	 * @return Success flag
 	 */
 	protected abstract boolean apiSuccess();
 

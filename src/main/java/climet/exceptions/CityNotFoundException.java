@@ -18,7 +18,7 @@ public class CityNotFoundException extends Exception {
 	 * Constructs an instance of
 	 * <code>CityNotFoundException</code> with the specified detail message.
 	 *
-	 * @param msg the detail message.
+	 * @param message Detailed message.
 	 */
 	public CityNotFoundException(String message) {
 		this.message = message;
