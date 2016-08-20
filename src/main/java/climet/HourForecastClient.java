@@ -10,12 +10,12 @@ public class HourForecastClient extends AbstractRequester {
 
 	private HourForecastData forecastData;
 
-	public HourForecastClient(String town) {
-		super(town);
+	public HourForecastClient(String town, String apiKey) {
+		super(town, apiKey);
 	}
 
-	public HourForecastClient(float lat, float lon) {
-		super(lat, lon);
+	public HourForecastClient(float lat, float lon, String apiKey) {
+		super(lat, lon, apiKey);
 	}
 
 	/*

@@ -1,15 +1,12 @@
 package climet.domain;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-
-import java.util.List;
-
 import org.json.JSONObject;
 import org.junit.Test;
 
-import climet.domain.DateForecastData;
-import climet.domain.Weather;
+import java.util.List;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 
 public class TestDateForecastData {
 

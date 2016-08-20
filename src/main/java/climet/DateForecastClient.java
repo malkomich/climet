@@ -10,12 +10,12 @@ public class DateForecastClient extends AbstractRequester {
 
 	private DateForecastData forecastData;
 
-	public DateForecastClient(String town) {
-		super(town);
+	public DateForecastClient(String town, String apiKey) {
+		super(town, apiKey);
 	}
 
-	public DateForecastClient(float lat, float lon) {
-		super(lat, lon);
+	public DateForecastClient(float lat, float lon, String apiKey) {
+		super(lat, lon, apiKey);
 	}
 
 	/*

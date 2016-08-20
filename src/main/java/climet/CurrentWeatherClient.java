@@ -11,12 +11,12 @@ public class CurrentWeatherClient extends AbstractRequester{
 
 	private CurrentWeatherData weatherData;
 
-	public CurrentWeatherClient(String town) {
-		super(town);
+	public CurrentWeatherClient(String town, String apiKey) {
+		super(town, apiKey);
 	}
 
-	public CurrentWeatherClient(float lat, float lon) {
-		super(lat, lon);
+	public CurrentWeatherClient(float lat, float lon, String apiKey) {
+		super(lat, lon, apiKey);
 	}
 
 	/* (non-Javadoc)

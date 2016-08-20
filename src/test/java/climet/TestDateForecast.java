@@ -1,25 +1,15 @@
 package climet;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-
-import java.util.List;
-
-import org.junit.Test;
-
-import climet.DateForecastClient;
 import climet.domain.City;
 import climet.domain.DateForecastData;
 import climet.domain.Weather;
+import org.junit.Test;
+
+import java.util.List;
+
+import static org.junit.Assert.*;
 
 public class TestDateForecast {
-
-	private final String CITY_EXAMPLE = "valladolid";
-	private final String WRONG_CITY_EXAMPLE = "zzzzzzzzzzzzzzzzzzzzz";
-	private final float LAT_EXAMPLE = 41.66f;
-	private final float LON_EXAMPLE = -4.72f;
 
 	/**
 	 * Check the call to the REST Service from “OpenWeatherMap” by the name of a
@@ -27,7 +17,7 @@ public class TestDateForecast {
 	 */
 	@Test
 	public void getDateForecastByCity() {
-		DateForecastClient api = new DateForecastClient(CITY_EXAMPLE);
+		DateForecastClient api = new DateForecastClient(TestConstants.CITY_EXAMPLE, TestConstants.DEFAULT_API_KEY);
 		DateForecastData data = api.getForecast();
 		City city = data.getCity();
 		List<Weather> forecast = data.getForecast();
@@ -42,7 +32,8 @@ public class TestDateForecast {
 	 */
 	@Test
 	public void getDateForecastByWrongCity() {
-		DateForecastClient api = new DateForecastClient(WRONG_CITY_EXAMPLE);
+		DateForecastClient api = new DateForecastClient(TestConstants.WRONG_CITY_EXAMPLE,
+			TestConstants.DEFAULT_API_KEY);
 		DateForecastData data = api.getForecast();
 		assertNull(data);
 	}
@@ -53,7 +44,8 @@ public class TestDateForecast {
 	 */
 	@Test
 	public void getDateForecastByCoordinates() {
-		DateForecastClient api = new DateForecastClient(LAT_EXAMPLE, LON_EXAMPLE);
+		DateForecastClient api = new DateForecastClient(TestConstants.LAT_EXAMPLE, TestConstants.LON_EXAMPLE,
+			TestConstants.DEFAULT_API_KEY);
 		DateForecastData data = api.getForecast();
 		City city = data.getCity();
 		List<Weather> forecast = data.getForecast();
@@ -68,7 +60,7 @@ public class TestDateForecast {
 	 */
 	@Test
 	public void getDateForecastByWrongCoordinates() {
-		DateForecastClient api = new DateForecastClient(100, -80);
+		DateForecastClient api = new DateForecastClient(100, -80, TestConstants.DEFAULT_API_KEY);
 		DateForecastData data = api.getForecast();
 		assertNull(data);
 	}

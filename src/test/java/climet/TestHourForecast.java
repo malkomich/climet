@@ -1,19 +1,12 @@
 package climet;
 
+import climet.domain.HourForecastData;
+import org.junit.Test;
+
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
-import org.junit.Test;
-
-import climet.HourForecastClient;
-import climet.domain.HourForecastData;
-
 public class TestHourForecast {
-
-	private final String CITY_EXAMPLE = "valladolid";
-	private final String WRONG_CITY_EXAMPLE = "zzzzzzzzzzzzzzzzzzzzz";
-	private final float LAT_EXAMPLE = 41.66f;
-	private final float LON_EXAMPLE = -4.72f;
 
 	/**
 	 * Check the call to the REST Service from “OpenWeatherMap” by the name of a
@@ -21,7 +14,7 @@ public class TestHourForecast {
 	 */
 	@Test
 	public void getHourForecastByCity() {
-		HourForecastClient api = new HourForecastClient(CITY_EXAMPLE);
+		HourForecastClient api = new HourForecastClient(TestConstants.CITY_EXAMPLE, TestConstants.DEFAULT_API_KEY);
 		HourForecastData data = api.getForecast();
 		assertNotNull(data);
 	}
@@ -32,7 +25,8 @@ public class TestHourForecast {
 	 */
 	@Test
 	public void getHourForecastByWrongCity() {
-		HourForecastClient api = new HourForecastClient(WRONG_CITY_EXAMPLE);
+		HourForecastClient api = new HourForecastClient(TestConstants.WRONG_CITY_EXAMPLE,
+			TestConstants.DEFAULT_API_KEY);
 		HourForecastData data = api.getForecast();
 		assertNull(data);
 	}
@@ -43,7 +37,8 @@ public class TestHourForecast {
 	 */
 	@Test
 	public void getHourForecastByCoordinates() {
-		HourForecastClient api = new HourForecastClient(LAT_EXAMPLE, LON_EXAMPLE);
+		HourForecastClient api = new HourForecastClient(TestConstants.LAT_EXAMPLE, TestConstants.LON_EXAMPLE,
+			TestConstants.DEFAULT_API_KEY);
 		HourForecastData data = api.getForecast();
 		assertNotNull(data);
 	}
@@ -54,7 +49,7 @@ public class TestHourForecast {
 	 */
 	@Test
 	public void getHourForecastByWrongCoordinates() {
-		HourForecastClient api = new HourForecastClient(100, -80);
+		HourForecastClient api = new HourForecastClient(100, -80, TestConstants.DEFAULT_API_KEY);
 		HourForecastData data = api.getForecast();
 		assertNull(data);
 	}

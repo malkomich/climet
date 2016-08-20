@@ -1,5 +1,7 @@
 package climet;
 
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -7,20 +9,17 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import org.json.JSONObject;
-
 public abstract class AbstractRequester {
 
-	private final String API_KEY = "26270deb633eb0d3251817f98eec72c1";
 	private final String OWN_COD = "cod";
 
-	protected AbstractRequester(String town) {
-		String path = getBaseURL() + "?q=" + town.toLowerCase() + apiKeySuffix();
+	protected AbstractRequester(String town, String apiKey) {
+		String path = getBaseURL() + "?q=" + town.toLowerCase() + apiKeySuffix(apiKey);
 		doRequest(path);
 	}
 
-	protected AbstractRequester(float lat, float lon) {
-		String path = getBaseURL() + "?lat=" + lat + "&lon=" + lon + apiKeySuffix();
+	protected AbstractRequester(float lat, float lon, String apiKey) {
+		String path = getBaseURL() + "?lat=" + lat + "&lon=" + lon + apiKeySuffix(apiKey);
 		doRequest(path);
 	}
 
@@ -90,8 +89,8 @@ public abstract class AbstractRequester {
 	 * 
 	 * @return URL portion
 	 */
-	private String apiKeySuffix() {
-		return "&APPID=" + API_KEY;
+	private String apiKeySuffix(String apiKey) {
+		return "&APPID=" + apiKey;
 	}
 
 	/**
